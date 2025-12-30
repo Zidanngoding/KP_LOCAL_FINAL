@@ -14,6 +14,7 @@ class KtpPengambilan extends Model
         'foto_bukti',
         'keterangan',
         'tanggal_ambil',
+        'keterangan_ikd',
     ];
 
     protected $casts = [

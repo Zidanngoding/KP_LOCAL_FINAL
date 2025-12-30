@@ -34,6 +34,7 @@ class KtpPengambilanController extends Controller
     {
         $request->validate([
             'nama_pemohon' => 'required',
+            'keterangan_ikd' => 'required',
             'foto_bukti' => 'required|image|mimes:jpg,png',
         ]);
 
@@ -54,6 +55,7 @@ class KtpPengambilanController extends Controller
             'kecamatan' => $ktpPrr->kecamatan,
             'foto_bukti' => $path,
             'keterangan' => null,
+            'keterangan_ikd' => $request->keterangan_ikd,
         ]);
 
         // Update status di ktp_prr

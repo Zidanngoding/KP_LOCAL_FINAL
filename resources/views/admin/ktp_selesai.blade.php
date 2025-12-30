@@ -75,7 +75,8 @@
                         <th>No HP Pengambil</th>
                         <th>Kecamatan</th>
                         <th>Keterangan</th>
-                        <th>Pengambilan</th>
+                        <th>Keterangan IKD</th>
+                        <th></th>Pengambilan</th>
                         <th>Nama Pengambil</th>
                         @if(!$isPdf)
                         <th>Foto Pengambil</th>
@@ -88,9 +89,10 @@
                         <td>{{ $loop->iteration + ($ktp_selesai->currentPage() - 1) * $ktp_selesai->perPage() }}</td>
                         <td>{{ $ktp->tanggal_ambil->format('d-m-Y') }}</td>
                         <td>{{ $ktp->nama_pemohon }}</td>
-                        <td>{{ $ktp->no_hp_pengambil ?: '-' }}</td>
+                        <td>{{ $ktp->no_hp ?: '-' }}</td>
                         <td>{{ $ktp->kecamatan }}</td>
                         <td>{{ $ktp->keterangan }}</td>
+                        <td>{{ $ktp->keterangan_ikd ?: '-' }}</td>
                         <td>{{ $ktp->keterangan_pengambilan }}</td>
                         <td>{{ $ktp->nama_pengambil ?: '-' }}</td>
                         @if(!$isPdf)

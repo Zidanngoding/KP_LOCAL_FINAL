@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'KTP PRR')</title>
+    <title>@yield('title', 'SIKAM ELOK')</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -14,7 +14,7 @@
     @if(!isset($isPdf) || !$isPdf)
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container">
-            <a class="navbar-brand" href="#">KTP PRR</a>
+            <a class="navbar-brand" href="#">SIKAM ELOK</a>
             <div class="navbar-nav ms-auto">
                 <a class="nav-link" href="{{ route('admin.ktp_masuk') }}">KTP Masuk</a>
                 <a class="nav-link" href="{{ route('admin.ktp_pengambilan') }}">Pengambilan</a>

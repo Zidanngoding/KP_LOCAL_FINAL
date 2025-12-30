@@ -26,6 +26,14 @@
                     </select>
                 </div>
                 <div class="col-lg-6">
+                    <label for="keterangan_ikd" class="form-label">Keterangan IKD</label>
+                    <select name="keterangan_ikd" class="form-select" id="keterangan_ikd" required>
+                        <option value="">Pilih Keterangan IKD</option>
+                        <option value="Sudah IKD">Sudah IKD</option>
+                        <option value="Belum IKD">Belum IKD</option>
+                    </select>
+                </div>
+                <div class="col-lg-6">
                     <label for="foto_bukti" class="form-label">Foto Bukti</label>
                     <input type="file" name="foto_bukti" id="foto_bukti" class="form-control" accept="image/*" required>
                     <div class="form-text">Ambil foto bukti langsung dari kamera atau unggah file.</div>
@@ -97,6 +105,7 @@
                     <tr>
                         <th>Nama</th>
                         <th>Kecamatan</th>
+                        <th>Keterangan IKD</th>
                         <th>Status</th>
                     </tr>
                 </thead>
