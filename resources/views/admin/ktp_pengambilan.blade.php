@@ -29,7 +29,9 @@
                     <label for="keterangan_ikd" class="form-label">Keterangan IKD</label>
                     <select name="keterangan_ikd" class="form-select" id="keterangan_ikd" required>
                         <option value="">Pilih Keterangan IKD</option>
-                        <option value="Sudah IKD">Sudah IKD</option>
+                        <option value="Sudah IKD">IKD Sendiri</option>
+                        <option value="Sudah IKD">IKD Orang Tua</option>
+                        <option value="Sudah IKD">IKD Dalam Satu KK</option>
                         <option value="Belum IKD">Belum IKD</option>
                     </select>
                 </div>
