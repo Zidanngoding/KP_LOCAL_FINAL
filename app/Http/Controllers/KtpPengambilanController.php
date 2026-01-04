@@ -25,7 +25,7 @@ class KtpPengambilanController extends Controller
             $query->whereDate('created_at', $request->tanggal);
         }
 
-        $ktp_selesai = $query->paginate(10);
+        $ktp_selesai = $query->get();
 
         return view('admin.ktp_pengambilan', compact('ktp_selesai'));
     }
@@ -48,7 +48,7 @@ class KtpPengambilanController extends Controller
         }
 
         $namaFile = 'bukti_' . str_replace([' ', '/', '\\'], '_', $request->nama_pemohon) . '_' . time() . '.jpg';
-        $path = $request->file('foto_bukti')->storeAs('bukti_pengambilan', $namaFile, 'public');
+        $path = $request->file('foto_bukti')->storeAs('bukti_pengambilan', $namaFile, 'supabase');
 
         KtpPengambilan::create([
             'nama_pemohon' => $request->nama_pemohon,

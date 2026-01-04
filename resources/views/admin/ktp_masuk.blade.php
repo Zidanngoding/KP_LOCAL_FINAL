@@ -154,7 +154,7 @@
                         $statusClass = strtolower($ktp->status) === 'diproses' ? 'pending' : 'success';
                     @endphp
                     <tr>
-                        <td>{{ $loop->iteration + ($ktp_prr->currentPage() - 1) * $ktp_prr->perPage() }}</td>
+                        <td>{{ $loop->iteration }}</td>
                         <td>{{ $ktp->created_at->format('d-m-Y') }}</td>
                         <td>{{ $ktp->nama_pemohon }}</td>
                         <td>{{ $ktp->no_hp }}</td>
@@ -181,7 +181,6 @@
                 </tbody>
             </table>
         </div>
-        {{ $ktp_prr->appends(request()->query())->links() }}
     </div>
 </div>
 

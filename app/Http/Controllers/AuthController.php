@@ -42,13 +42,13 @@ class AuthController extends Controller
             'username' => 'required|unique:users',
             'password' => 'required|min:6',
             'confirm_password' => 'required|same:password',
-            'role' => 'required|in:admin,user',
+            'role' => 'nullable|in:admin,user',
         ]);
 
         User::create([
             'username' => $request->username,
             'password' => Hash::make($request->password),
-            'role' => $request->role,
+            'role' => $request->role ?? 'user',
         ]);
 
         return redirect('/login');

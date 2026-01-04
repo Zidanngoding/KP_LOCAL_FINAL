@@ -86,7 +86,7 @@
                 <tbody>
                     @foreach($ktp_selesai as $ktp)
                     <tr>
-                        <td>{{ $loop->iteration + ($ktp_selesai->currentPage() - 1) * $ktp_selesai->perPage() }}</td>
+                        <td>{{ $loop->iteration }}</td>
                         <td>{{ $ktp->tanggal_ambil->format('d-m-Y') }}</td>
                         <td>{{ $ktp->nama_pemohon }}</td>
                         <td>{{ $ktp->no_hp ?: '-' }}</td>
@@ -96,7 +96,7 @@
                         <td>{{ $ktp->keterangan_pengambilan }}</td>
                         <td>{{ $ktp->nama_pengambil ?: '-' }}</td>
                         @if(!$isPdf)
-                        <td><img src="{{ asset('storage/' . $ktp->foto_bukti) }}" width="100" class="img-thumbnail"></td>
+                        <td><img src="{{ Storage::disk('supabase')->url($ktp->foto_bukti) }}" width="100" class="img-thumbnail"></td>
                         @endif
                     </tr>
                     @endforeach
@@ -104,7 +104,6 @@
             </table>
 @if(!$isPdf)
         </div>
-        {{ $ktp_selesai->appends(request()->query())->links() }}
     </div>
 </div>
 @endif

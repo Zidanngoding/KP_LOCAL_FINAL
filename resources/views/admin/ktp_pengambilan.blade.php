@@ -125,7 +125,6 @@
                 </tbody>
             </table>
         </div>
-        {{ $ktp_selesai->appends(request()->query())->links() }}
     </div>
 </div>
 
@@ -137,7 +136,14 @@ document.getElementById('bukaKamera').addEventListener('click', function() {
     const input = document.querySelector('input[name="foto_bukti"]');
     
     if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-        navigator.mediaDevices.getUserMedia({ video: { width: 640, height: 480 } })
+        navigator.mediaDevices.getUserMedia({
+            video: {
+                facingMode: 'user',
+                width: { ideal: 1280 },
+                height: { ideal: 720 }
+            },
+            audio: false
+        })
             .then(function(stream) {
                 // Buat modal untuk kamera
                 const modal = document.createElement('div');

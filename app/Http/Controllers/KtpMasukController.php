@@ -23,7 +23,7 @@ class KtpMasukController extends Controller
             $query->whereDate('created_at', $request->tanggal);
         }
 
-        $ktp_prr = $query->paginate(10);
+        $ktp_prr = $query->get();
 
         return view('admin.ktp_masuk', compact('ktp_prr'));
     }

@@ -32,7 +32,7 @@ class KtpSelesaiController extends Controller
             $query->whereDate('ktp_pengambilan.tanggal_ambil', $request->tanggal);
         }
 
-        $ktp_selesai = $query->paginate(10);
+        $ktp_selesai = $query->get();
 
         $isPdf = $request->has('pdf');
 
