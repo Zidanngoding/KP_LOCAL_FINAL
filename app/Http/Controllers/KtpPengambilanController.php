@@ -48,7 +48,7 @@ class KtpPengambilanController extends Controller
         }
 
         $namaFile = 'bukti_' . str_replace([' ', '/', '\\'], '_', $request->nama_pemohon) . '_' . time() . '.jpg';
-        $path = $request->file('foto_bukti')->storeAs('bukti_pengambilan', $namaFile, 'supabase');
+        $path = $request->file('foto_bukti')->storeAs('bukti_pengambilan', $namaFile, ['disk' => 'supabase', 'visibility' => 'public']);
 
         KtpPengambilan::create([
             'nama_pemohon' => $request->nama_pemohon,

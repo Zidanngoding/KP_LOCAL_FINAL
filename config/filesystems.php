@@ -68,6 +68,7 @@ return [
             'endpoint' => env('SUPABASE_S3_ENDPOINT'),
             'use_path_style_endpoint' => true,
             'visibility' => 'public',
+            'ACL' => 'public-read',
             'throw' => false,
             'report' => false,
         ],
