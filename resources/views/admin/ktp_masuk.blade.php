@@ -51,16 +51,6 @@
                     </select>
                 </div>
                 <div class="col-lg-4">
-                    <label class="form-label">Keterangan</label>
-                    <select name="keterangan" class="form-select" required>
-                        <option value="">Pilih Keterangan</option>
-                        <option value="PRR">PRR</option>
-                        <option value="Hilang">Hilang</option>
-                        <option value="Rusak">Rusak</option>
-                        <option value="Perubahan">Perubahan</option>
-                    </select>
-                </div>
-                <div class="col-lg-4">
                     <label class="form-label">Pengambilan</label>
                     <select name="keterangan_pengambilan" class="form-select" required>
                         <option value="">Pilih Keterangan Pengambilan</option>

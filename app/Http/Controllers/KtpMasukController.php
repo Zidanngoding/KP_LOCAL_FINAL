@@ -34,12 +34,19 @@ class KtpMasukController extends Controller
             'nama_pemohon' => 'required',
             'no_hp' => 'required',
             'kecamatan' => 'required',
-            'keterangan' => 'required|in:PRR,Hilang,Rusak,Perubahan',
             'keterangan_pengambilan' => 'required|in:Diambil sendiri,Diwakilkan satu KK,Diwakilkan surat Dinas Sosial,Diwakilkan surat Kelurahan',
             'nama_pengambil' => 'nullable|string',
         ]);
 
-        KtpPrr::create($request->all());
+        KtpPrr::create([
+            'nama_pemohon' => $request->nama_pemohon,
+            'no_hp' => $request->no_hp,
+            'kecamatan' => $request->kecamatan,
+            'keterangan' => 'PRR',
+            'keterangan_pengambilan' => $request->keterangan_pengambilan,
+            'nama_pengambil' => $request->nama_pengambil,
+            'status' => 'Diproses',
+        ]);
 
         return redirect()->back()->with('success', 'Data berhasil ditambahkan');
     }
