@@ -27,10 +27,7 @@ class KtpPengambilanController extends Controller
 
         $ktp_selesai = $query->paginate(50);
 
-        // For select options, get all without pagination
-        $all_ktp_selesai = KtpPrr::where('status', 'Selesai')->get();
-
-        return view('admin.ktp_pengambilan', compact('ktp_selesai', 'all_ktp_selesai'));
+        return view('admin.ktp_pengambilan', compact('ktp_selesai'));
     }
 
     public function store(Request $request)
@@ -51,7 +48,7 @@ class KtpPengambilanController extends Controller
         }
 
         $namaFile = 'bukti_' . str_replace([' ', '/', '\\'], '_', $request->nama_pemohon) . '_' . time() . '.jpg';
-        $path = $request->file('foto_bukti')->storeAs('bukti_pengambilan', $namaFile, ['disk' => 'supabase', 'visibility' => 'public']);
+        $path = $request->file('foto_bukti')->storeAs('bukti_pengambilan', $namaFile, ['disk' => 'public']);
 
         KtpPengambilan::create([
             'nama_pemohon' => $request->nama_pemohon,

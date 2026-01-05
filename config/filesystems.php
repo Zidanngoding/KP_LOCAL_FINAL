@@ -65,7 +65,7 @@ return [
             'secret' => env('sb_publishable_zOO3FkvrVR1qn834zmwtIw_HrHaj0jH'),
             'region' => env('us-east-1'),
             'bucket' => env('uploads'),
-            'endpoint' => env('https://konxgvxqesfsijnnyaiu.supabase.co/storage/v1/object/public/uploads'),
+            'endpoint' => env('https://konxgvxqesfsijnnyaiu.supabase.co/storage/v1'),
             'use_path_style_endpoint' => true,
             'visibility' => 'public',
             'ACL' => 'public-read',
