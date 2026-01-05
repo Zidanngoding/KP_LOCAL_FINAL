@@ -35,7 +35,7 @@ class KtpPengambilanController extends Controller
         $request->validate([
             'nama_pemohon' => 'required',
             'keterangan_ikd' => 'required',
-            'foto_bukti' => 'required|image|mimes:jpg,png',
+            'foto_bukti' => 'required|image|mimes:jpeg,jpg,png|max:2048',
         ]);
 
         // Cari kecamatan dari ktp_prr berdasarkan nama_pemohon dan status Selesai
