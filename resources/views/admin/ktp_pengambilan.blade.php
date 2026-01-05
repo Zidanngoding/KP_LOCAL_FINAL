@@ -20,7 +20,7 @@
                     <label for="nama_pemohon" class="form-label">Pemohon</label>
                     <select name="nama_pemohon" class="form-select" id="nama_pemohon" required>
                         <option value="">Pilih Pemohon</option>
-                        @foreach($ktp_selesai as $ktp)
+                        @foreach($all_ktp_selesai as $ktp)
                             <option value="{{ $ktp->nama_pemohon }}">{{ $ktp->nama_pemohon }}</option>
                         @endforeach
                     </select>
@@ -124,6 +124,7 @@
                     @endforeach
                 </tbody>
             </table>
+            {{ $ktp_selesai->links() }}
         </div>
     </div>
 </div>

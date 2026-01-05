@@ -25,9 +25,12 @@ class KtpPengambilanController extends Controller
             $query->whereDate('created_at', $request->tanggal);
         }
 
-        $ktp_selesai = $query->get();
+        $ktp_selesai = $query->paginate(50);
 
-        return view('admin.ktp_pengambilan', compact('ktp_selesai'));
+        // For select options, get all without pagination
+        $all_ktp_selesai = KtpPrr::where('status', 'Selesai')->get();
+
+        return view('admin.ktp_pengambilan', compact('ktp_selesai', 'all_ktp_selesai'));
     }
 
     public function store(Request $request)
