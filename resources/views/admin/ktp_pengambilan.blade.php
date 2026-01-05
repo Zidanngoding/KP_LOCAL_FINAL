@@ -112,19 +112,17 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($ktp_selesai as $ktp)
-                    @php
-                        $statusClass = strtolower($ktp->status) === 'selesai' ? 'success' : 'pending';
-                    @endphp
+                    @foreach($ktp_pengambilan as $pengambilan)
                     <tr>
-                        <td>{{ $ktp->nama_pemohon }}</td>
-                        <td>{{ $ktp->kecamatan }}</td>
-                        <td><span class="badge-status {{ $statusClass }}">{{ $ktp->status }}</span></td>
+                        <td>{{ $pengambilan->nama_pemohon }}</td>
+                        <td>{{ $pengambilan->kecamatan }}</td>
+                        <td>{{ $pengambilan->keterangan_ikd }}</td>
+                        <td><span class="badge-status success">Diambil</span></td>
                     </tr>
                     @endforeach
                 </tbody>
             </table>
-            {{ $ktp_selesai->links() }}
+            {{ $ktp_pengambilan->links() }}
         </div>
     </div>
 </div>

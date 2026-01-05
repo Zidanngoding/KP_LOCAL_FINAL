@@ -11,23 +11,27 @@ class KtpPengambilanController extends Controller
 {
     public function index(Request $request)
     {
-        $query = KtpPrr::where('status', 'Selesai');
+        // For the table: list of pengambilan records
+        $pengambilanQuery = KtpPengambilan::query();
 
         if ($request->search) {
-            $query->where('nama_pemohon', 'like', '%' . $request->search . '%');
+            $pengambilanQuery->where('nama_pemohon', 'like', '%' . $request->search . '%');
         }
 
         if ($request->kecamatan) {
-            $query->where('kecamatan', $request->kecamatan);
+            $pengambilanQuery->where('kecamatan', $request->kecamatan);
         }
 
         if ($request->tanggal) {
-            $query->whereDate('created_at', $request->tanggal);
+            $pengambilanQuery->whereDate('created_at', $request->tanggal);
         }
 
-        $ktp_selesai = $query->paginate(50);
+        $ktp_pengambilan = $pengambilanQuery->paginate(50);
 
-        return view('admin.ktp_pengambilan', compact('ktp_selesai'));
+        // For select options: all pemohon with status Selesai
+        $all_ktp_selesai = KtpPrr::where('status', 'Selesai')->get();
+
+        return view('admin.ktp_pengambilan', compact('ktp_pengambilan', 'all_ktp_selesai'));
     }
 
     public function store(Request $request)
