@@ -12,14 +12,16 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('ktp_prr', function (Blueprint $table) {
-            $table->enum('keterangan_pengambilan', ['Diambil sendiri', 'Diwakilkan satu KK', 'Diwakilkan surat Dinas Sosial', 'Diwakilkan surat Kelurahan'])->change();
+            $table->dropColumn('keterangan_pengambilan');
+            $table->enum('keterangan_pengambilan', ['Diambil sendiri', 'Diwakilkan satu KK', 'Diwakilkan surat Dinas Sosial', 'Diwakilkan surat Kelurahan']);
         });
     }
 
     public function down(): void
     {
         Schema::table('ktp_prr', function (Blueprint $table) {
-            $table->enum('keterangan_pengambilan', ['Diambil sendiri', 'Diwakilkan'])->change();
+            $table->dropColumn('keterangan_pengambilan');
+            $table->enum('keterangan_pengambilan', ['Diambil sendiri', 'Diwakilkan']);
         });
     }
 };

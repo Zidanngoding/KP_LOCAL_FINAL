@@ -16,7 +16,7 @@
         <form method="POST" action="{{ route('admin.ktp_masuk') }}">
             @csrf
             <div class="row g-3">
-                <div class="col-lg-4">
+                <div class="col-lg-4">      
                     <label class="form-label">Nama Pemohon</label>
                     <input type="text" name="nama_pemohon" class="form-control" placeholder="Nama Pemohon" required>
                 </div>
