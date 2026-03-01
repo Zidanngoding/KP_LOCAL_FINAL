@@ -152,9 +152,8 @@
                     </div>
                     <div class="auth-form-actions">
                         <button type="submit" class="btn btn-primary w-100">Login</button>
-                        <div>
-                            Belum punya akun?
-                            <a class="auth-link" href="{{ route('register') }}">Register</a>
+                        <div class="text-muted" style="font-size: 0.9rem">
+                            Hubungi admin untuk pembuatan akun.
                         </div>
                     </div>
                 </form>

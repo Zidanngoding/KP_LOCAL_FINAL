@@ -238,16 +238,20 @@
 document.querySelectorAll('.edit-btn').forEach(btn => {
     btn.addEventListener('click', function() {
         const id = this.dataset.id;
-        fetch(`/admin/ktp_masuk/${id}/edit`)
+
+        fetch(`/admin/ktp-masuk/${id}/edit`)
             .then(res => res.json())
             .then(data => {
+
                 document.getElementById('edit_nama').value = data.nama_pemohon;
                 document.getElementById('edit_hp').value = data.no_hp;
                 document.getElementById('edit_kecamatan').value = data.kecamatan;
                 document.getElementById('edit_keterangan').value = data.keterangan;
                 document.getElementById('edit_pengambilan').value = data.keterangan_pengambilan;
                 document.getElementById('edit_nama_pengambil').value = data.nama_pengambil || '';
-                document.getElementById('editForm').action = `/admin/ktp_masuk/${id}`;
+
+                document.getElementById('editForm').action = `/admin/ktp-masuk/${id}`;
+
                 new bootstrap.Modal(document.getElementById('editModal')).show();
             });
     });

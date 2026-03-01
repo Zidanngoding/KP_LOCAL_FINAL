@@ -24,11 +24,18 @@ class AuthController extends Controller
         $user = User::where('username', $request->username)->first();
 
         if ($user && Hash::check($request->password, $user->password)) {
+
             Auth::login($user);
-            return redirect('/admin/dashboard');
+
+            // 🔥 Redirect berdasarkan role
+            if ($user->role === 'admin') {
+                return redirect()->route('admin.dashboard');
+            } else {
+                return redirect()->route('petugas.dashboard');
+            }
         }
 
-        return redirect('/login?error=1');
+        return back()->with('error', 'Username atau password salah');
     }
 
     public function showRegister()
@@ -39,19 +46,22 @@ class AuthController extends Controller
     public function register(Request $request)
     {
         $request->validate([
+            'name' => 'required',
             'username' => 'required|unique:users',
-            'password' => 'required|min:6',
-            'confirm_password' => 'required|same:password',
-            'role' => 'nullable|in:admin,user',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:6|confirmed',
+            'role' => 'nullable|in:admin,petugas',
         ]);
 
         User::create([
+            'name' => $request->name,
             'username' => $request->username,
+            'email' => $request->email,
             'password' => Hash::make($request->password),
-            'role' => $request->role ?? 'user',
+            'role' => $request->role ?? 'petugas',
         ]);
 
-        return redirect('/login');
+        return redirect('/login')->with('success', 'Registrasi berhasil');
     }
 
     public function logout()

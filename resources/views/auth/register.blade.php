@@ -122,43 +122,89 @@
 <div class="auth-shell">
     <div class="container">
         <div class="auth-card">
+            <!-- LEFT INFO PANEL -->
             <div class="auth-panel auth-panel--info">
                 <div class="auth-brand">SIKAM ELOK</div>
                 <div class="auth-title">Buat Akun Baru</div>
-                <p class="auth-subtitle">Buat akses untuk admin atau operator agar pengelolaan data lebih rapi.</p>
+                <p class="auth-subtitle">
+                    Buat akses untuk admin atau operator agar pengelolaan data lebih rapi.
+                </p>
                 <ul class="auth-points">
                     <li><span class="auth-dot"></span>Kontrol hak akses sesuai peran.</li>
                     <li><span class="auth-dot"></span>Data pemohon tersinkron.</li>
                     <li><span class="auth-dot"></span>Dashboard siap untuk rekap.</li>
                 </ul>
             </div>
+
+            <!-- RIGHT FORM PANEL -->
             <div class="auth-panel auth-panel--form">
                 <div class="auth-form-header">
                     <h3>Register</h3>
                     <p>Lengkapi data berikut untuk membuat akun.</p>
                 </div>
+
+                {{-- ERROR MESSAGE --}}
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul class="mb-0">
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
                 <form method="POST" action="{{ route('register') }}">
                     @csrf
+
                     <div class="mb-3">
                         <label class="form-label">Username</label>
-                        <input type="text" name="username" class="form-control" placeholder="cth. petugas01" required>
+                        <input type="text"
+                               name="username"
+                               class="form-control"
+                               value="{{ old('username') }}"
+                               placeholder="cth. petugas01"
+                               required>
                     </div>
+
                     <div class="mb-3">
                         <label class="form-label">Password</label>
-                        <input type="password" name="password" class="form-control" placeholder="Buat password" required>
+                        <input type="password"
+                               name="password"
+                               class="form-control"
+                               placeholder="Buat password"
+                               required>
                     </div>
+
                     <div class="mb-3">
                         <label class="form-label">Confirm Password</label>
-                        <input type="password" name="confirm_password" class="form-control" placeholder="Ulangi password" required>
+                        <input type="password"
+                               name="confirm_password"
+                               class="form-control"
+                               placeholder="Ulangi password"
+                               required>
+                    </div>
+
+                    <!-- ROLE -->
+                    <div class="mb-3">
+                        <label class="form-label">Role</label>
+                        <select name="role" class="form-select">
+                            <option value="user" {{ old('role') == 'user' ? 'selected' : '' }}>User</option>
+                            <option value="admin" {{ old('role') == 'admin' ? 'selected' : '' }}>Admin</option>
+                        </select>
                     </div>
 
                     <div class="auth-form-actions">
-                        <button type="submit" class="btn btn-primary w-100">Register</button>
+                        <button type="submit" class="btn btn-primary w-100">
+                            Register
+                        </button>
+
                         <div>
                             Sudah punya akun?
                             <a class="auth-link" href="{{ route('login') }}">Login</a>
                         </div>
                     </div>
+
                 </form>
             </div>
         </div>

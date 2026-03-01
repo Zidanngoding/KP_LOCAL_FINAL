@@ -74,7 +74,7 @@ class KtpMasukController extends Controller
         return redirect()->back()->with('success', 'Data berhasil diupdate');
     }
 
-    public function markComplete($id)
+    public function complete($id)
     {
         $ktp = KtpPrr::findOrFail($id);
         $ktp->update(['status' => 'Selesai']);

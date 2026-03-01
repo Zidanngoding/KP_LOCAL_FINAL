@@ -13,7 +13,9 @@
 <div class="card section-gap">
     <div class="card-header">Form Pengambilan</div>
     <div class="card-body">
-        <form method="POST" action="{{ route('admin.ktp_pengambilan') }}" enctype="multipart/form-data">
+        <form method="POST"
+                action="{{ route('admin.ktp_pengambilan.store') }}"
+                enctype="multipart/form-data">
             @csrf
             <div class="row g-3">
                 <div class="col-lg-6">
