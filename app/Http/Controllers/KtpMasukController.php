@@ -36,6 +36,7 @@ class KtpMasukController extends Controller
             'kecamatan' => 'required',
             'keterangan_pengambilan' => 'required|in:Diambil sendiri,Diwakilkan satu KK,Diwakilkan surat Dinas Sosial,Diwakilkan surat Kelurahan',
             'nama_pengambil' => 'nullable|string',
+            'nik_pengambil' => 'nullable|string',
         ]);
 
         KtpPrr::create([
@@ -45,6 +46,7 @@ class KtpMasukController extends Controller
             'keterangan' => 'PRR',
             'keterangan_pengambilan' => $request->keterangan_pengambilan,
             'nama_pengambil' => $request->nama_pengambil,
+            'nik_pengambil' => $request->nik_pengambil,
             'status' => 'Diproses',
         ]);
 
@@ -66,6 +68,7 @@ class KtpMasukController extends Controller
             'keterangan' => 'required|in:PRR,Hilang,Rusak,Perubahan',
             'keterangan_pengambilan' => 'required|in:Diambil sendiri,Diwakilkan',
             'nama_pengambil' => 'nullable|string',
+            'nik_pengambil' => 'nullable|string',
         ]);
 
         $ktp = KtpPrr::findOrFail($id);

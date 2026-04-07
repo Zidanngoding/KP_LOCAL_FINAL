@@ -60,11 +60,15 @@
                         <option value="Diwakilkan surat Kelurahan">Diwakilkan surat Kelurahan</option>
                     </select>
                 </div>
-                <div class="col-lg-4">
+                <div class="col-lg-3">
                     <label class="form-label">Nama Pengambil</label>
                     <input type="text" name="nama_pengambil" class="form-control" placeholder="Nama Pengambil">
                 </div>
-                <div class="col-lg-4 d-grid align-self-end">
+                <div class="col-lg-3">
+                    <label class="form-label">NIK Pengambil</label>
+                    <input type="text" name="nik_pengambil" class="form-control" placeholder="NIK Pengambil">
+                </div>
+                <div class="col-lg-2 d-grid align-self-end">
                     <button type="submit" class="btn btn-primary">Tambah</button>
                 </div>
             </div>
@@ -134,6 +138,7 @@
                         <th>Keterangan</th>
                         <th>Pengambilan</th>
                         <th>Nama Pengambil</th>
+                        <th>NIK Pengambil</th>
                         <th>Status</th>
                         <th>Aksi</th>
                     </tr>
@@ -151,8 +156,7 @@
                         <td>{{ $ktp->kecamatan }}</td>
                         <td>{{ $ktp->keterangan }}</td>
                         <td>{{ $ktp->keterangan_pengambilan }}</td>
-                        <td>{{ $ktp->nama_pengambil ?: '-' }}</td>
-                        <td><span class="badge-status {{ $statusClass }}">{{ $ktp->status }}</span></td>
+                        <td>{{ $ktp->nama_pengambil ?: '-' }}</td>                        <td>{{ $ktp->nik_pengambil ?: '-' }}</td>                        <td><span class="badge-status {{ $statusClass }}">{{ $ktp->status }}</span></td>
                         <td>
                             <button class="btn btn-sm btn-warning edit-btn" data-id="{{ $ktp->id }}">Edit</button>
                             @if($ktp->status == 'Diproses')
@@ -221,8 +225,7 @@
                         <option value="Diwakilkan surat Dinas Sosial">Diwakilkan surat Dinas Sosial</option>
                         <option value="Diwakilkan surat Kelurahan">Diwakilkan surat Kelurahan</option>
                     </select>
-                    <input type="text" name="nama_pengambil" class="form-control mb-2" id="edit_nama_pengambil" placeholder="Nama Pengambil">
-                </div>
+                    <input type="text" name="nama_pengambil" class="form-control mb-2" id="edit_nama_pengambil" placeholder="Nama Pengambil">                    <input type=\"text\" name=\"nik_pengambil\" class=\"form-control mb-2\" id=\"edit_nik_pengambil\" placeholder=\"NIK Pengambil\">                </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-primary">Update</button>
                 </div>
@@ -249,6 +252,7 @@ document.querySelectorAll('.edit-btn').forEach(btn => {
                 document.getElementById('edit_keterangan').value = data.keterangan;
                 document.getElementById('edit_pengambilan').value = data.keterangan_pengambilan;
                 document.getElementById('edit_nama_pengambil').value = data.nama_pengambil || '';
+                document.getElementById('edit_nik_pengambil').value = data.nik_pengambil || '';
 
                 document.getElementById('editForm').action = `/admin/ktp-masuk/${id}`;
 

@@ -96,7 +96,7 @@
                         <td>{{ $ktp->keterangan_pengambilan }}</td>
                         <td>{{ $ktp->nama_pengambil ?: '-' }}</td>
                         @if(!$isPdf)
-                        <td><img src="{{ env('SUPABASE_URL') }}/storage/v1/object/public/{{ env('SUPABASE_BUCKET') }}/{{ $ktp->foto_bukti }}" width="100" class="img-thumbnail"></td>
+                        <td><img src="{{ \Illuminate\Support\Facades\Storage::disk('public')->url($ktp->foto_bukti) }}" width="100" class="img-thumbnail"></td>
                         @endif
                     </tr>
                     @endforeach

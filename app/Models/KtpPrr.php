@@ -15,6 +15,7 @@ class KtpPrr extends Model
         'keterangan',
         'keterangan_pengambilan',
         'nama_pengambil',
+        'nik_pengambil',
         'status',
     ];
 
